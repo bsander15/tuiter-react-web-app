@@ -1,0 +1,31 @@
+.wd-float-left {
+    float: left;
+}
+
+.wd-grid-row {
+    clear: both;
+}
+
+.wd-grid-col-two-thirds {
+    width: 90%;
+    float: left;
+}
+
+.wd-grid-col-third {
+    width: 10%;
+    float: left;
+}
+
+.wd-image-container {
+    position: relative;
+}
+
+.wd-overlay-text {
+    position: absolute;
+    top: 95%;
+    left: 20%;
+    transform: translate(-50%, -50%);
+    color: white;
+    font-size: 24px;
+    text-align: center;
+}
