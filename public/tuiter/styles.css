@@ -23,7 +23,7 @@
 .wd-overlay-text {
     position: absolute;
     top: 95%;
-    left: 20%;
+    left: 15%;
     transform: translate(-50%, -50%);
     color: white;
     font-size: 24px;
