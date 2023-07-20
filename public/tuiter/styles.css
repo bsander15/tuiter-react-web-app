@@ -16,6 +16,16 @@
     float: left;
 }
 
+.wd-grid-col-tenth {
+    width: 10%;
+    float: left;
+}
+
+.wd-grid-col-80 {
+    width: 80%;
+    float: left;
+}
+
 .wd-image-container {
     position: relative;
 }
