@@ -2,13 +2,13 @@ import React from "react";
 import { BsFillPatchCheckFill } from "react-icons/bs";
 import TuitStats from "./tuit-stats";
 import { useDispatch } from "react-redux";
-import { deleteTuit } from "../reducers/tuits-reducer";
+import { deleteTuitThunk } from "../services/tuits-thunks";
 
 const TuitItem = ({ tuit }) => {
 
     const dispatch = useDispatch();
     const deleteTuitHandler = (id) => {
-        dispatch(deleteTuit(id));
+        dispatch(deleteTuitThunk(id));
     }
 
     return (
@@ -23,11 +23,7 @@ const TuitItem = ({ tuit }) => {
                     <div>{tuit.userName} <BsFillPatchCheckFill color="blue" /> . {tuit.time}</div>
                     <div>{tuit.tuit}</div>
                     <div><TuitStats
-                        liked={tuit.liked}
-                        replies={tuit.replies}
-                        retuits={tuit.retuits}
-                        likes={tuit.likes}
-                        id={tuit._id}
+                        tuit={tuit}
                     />
                     </div>
 
