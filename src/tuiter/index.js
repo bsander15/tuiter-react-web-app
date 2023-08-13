@@ -13,6 +13,8 @@ import whoReducer from "./reducers/who-reducer";
 import tuitsReducer from "./reducers/tuits-reducer";
 import { configureStore } from '@reduxjs/toolkit';
 import { Provider } from "react-redux";
+import AuthContext from "./user/auth-context";
+import ProtectedRoute from "./user/protected-route";
 const store = configureStore(
   { reducer: { who: whoReducer, tuits: tuitsReducer, user: authReducer } });
 
@@ -20,25 +22,31 @@ const store = configureStore(
 function Tuiter() {
   return (
     <Provider store={store}>
-      <Nav />
-      <div className="row">
-        <div className="col-2">
-          <NavigationSidebar />
+      <AuthContext>
+        <Nav />
+        <div className="row">
+          <div className="col-2">
+            <NavigationSidebar />
+          </div>
+          <div className="col-7">
+            <Routes>
+              <Route path="/" element={<HomeScreen />} />
+              <Route path="/explore" element={<ExploreScreen />} />
+              <Route path="/notifications" element={<BookmarksScreen />} />
+              <Route path="/login" element={<LoginScreen />} />
+              <Route path="/register" element={<RegisterScreen />} />
+              <Route path="/profile" element={
+                <ProtectedRoute>
+                  <ProfileScreen />
+                </ProtectedRoute>
+              } />
+            </Routes>
+          </div>
+          <div className="col-3">
+            <WhoToFollowList />
+          </div>
         </div>
-        <div className="col-7">
-          <Routes>
-            <Route path="/" element={<HomeScreen />} />
-            <Route path="/explore" element={<ExploreScreen />} />
-            <Route path="/notifications" element={<BookmarksScreen />} />
-            <Route path="/login" element={<LoginScreen />} />
-            <Route path="/register" element={<RegisterScreen />} />
-            <Route path="/profile" element={<ProfileScreen />} />
-          </Routes>
-        </div>
-        <div className="col-3">
-          <WhoToFollowList />
-        </div>
-      </div>
+      </AuthContext>
     </Provider>
   );
 }

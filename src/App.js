@@ -1,6 +1,7 @@
 import Labs from "./labs";
 import HelloWorld from "./labs/a3/hello-world";
 import Tuiter from "./tuiter";
+import AuthContext from "./tuiter/user/auth-context";
 import { HashRouter } from "react-router-dom";
 import { Routes, Route, Navigate } from 'react-router';
 
